@@ -25,9 +25,13 @@
       </div>
 
       <div v-if="store.result" class="results-grid">
-        <SpectrumPlot />
+        <div class="spectrum-column">
+          <SpectrumPlot />
+          <MarkerList />
+        </div>
         <ConstellationPlot />
       </div>
+      <MarkerList v-else />
       <WaterfallPlot v-if="store.result" />
       <ModulationResult v-if="store.result" />
     </main>
@@ -40,6 +44,7 @@ import SpectrumPlot from './components/SpectrumPlot.vue'
 import ConstellationPlot from './components/ConstellationPlot.vue'
 import WaterfallPlot from './components/WaterfallPlot.vue'
 import ModulationResult from './components/ModulationResult.vue'
+import MarkerList from './components/MarkerList.vue'
 import { useSignalStore } from './store/signal'
 const store = useSignalStore()
 const form = reactive({ modulation: 'QPSK', samples: 1024, snr: 20 })
@@ -56,4 +61,5 @@ body{font-family:system-ui,sans-serif;background:#0f1923;color:#e0e0e0}
 .app-main{padding:16px 40px}
 .control-card{background:#1a2332;border-radius:8px;padding:16px 20px;margin-bottom:16px;border:1px solid #2a3a4a}
 .results-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.spectrum-column{display:flex;flex-direction:column;gap:16px;min-width:0}
 </style>
