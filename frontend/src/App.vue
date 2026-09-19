@@ -29,6 +29,7 @@
         <ConstellationPlot />
       </div>
       <WaterfallPlot v-if="store.result" />
+      <MarkerList />
       <ModulationResult v-if="store.result" />
     </main>
   </div>
@@ -40,6 +41,7 @@ import SpectrumPlot from './components/SpectrumPlot.vue'
 import ConstellationPlot from './components/ConstellationPlot.vue'
 import WaterfallPlot from './components/WaterfallPlot.vue'
 import ModulationResult from './components/ModulationResult.vue'
+import MarkerList from './components/MarkerList.vue'
 import { useSignalStore } from './store/signal'
 const store = useSignalStore()
 const form = reactive({ modulation: 'QPSK', samples: 1024, snr: 20 })
